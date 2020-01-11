@@ -1,0 +1,14 @@
+!include pymodule.yaml
+---
+- package: pillow-simd
+  name: pillow-simd
+  version: "{{versions.pillow_simd}}"
+  vendor_source: https://github.com/uploadcare/pillow-simd/archive/v{{version}}.{{extension}}
+  description: |
+    Pillow-SIMD is following Pillow. Pillow-SIMD versions are 100% compatible drop-in 
+    replacements for Pillow of the same version. SIMD stands for single instuction, 
+    multiple data and its essence is in performing the same operation on multiple 
+    data points simultaneously by using multiple processing elements. 
+    Currently, Pillow-SIMD can be compiled with SSE4 (default) or AVX2 support.
+  files:
+    - "{{root}}/lib/python{{python_family}}/site-packages/*"

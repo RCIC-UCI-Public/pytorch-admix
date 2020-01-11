@@ -1,0 +1,31 @@
+# bild the module for pytorch
+!include pytorch.yaml
+!include rcic-module.yaml
+---
+- package: pytorch module
+  pkgname: "{{name}}_{{version}}_python{{python_version}}-module"
+  category: AI-LEARNING
+  module:
+    prepend_path:
+      - PATH "{{pkg_defaults.app_path}}/{{name}}/{{version}}/bin"
+      - LD_LIBRARY_PATH "{{pkg_defaults.app_path}}/{{name}}/{{version}}/lib"
+    prereq:
+      - foundation
+      - python/{{python_version}}
+#      - cuda/{{versions.cuda}}
+      - gcc/{{versions.gcc}}
+      - mkl/{{versions.mkl}}
+      - ffmpeg/{{versions.ffmpeg}}
+      - fftw/{{versions.fftw}}
+  requires:
+    - "{{name}}_{{version}}_python{{python_version}}"
+    - foundation-ninja
+    - python_{{python_version}}
+    - python_{{python_version}}-numpy
+    - python_{{python_version}}-six
+    - python_{{python_version}}-cffi
+    - python_{{python_version}}-PyYAML
+    - "gcc_{{versions.gcc}}"
+    - "mkl_{{versions.mkl}}"
+    - "ffmpeg_{{versions.ffmpeg}}"
+    - rcic-module-support

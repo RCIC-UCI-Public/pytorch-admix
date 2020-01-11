@@ -1,0 +1,12 @@
+!include pymodule.yaml
+---
+- package: Pillow
+  name: Pillow 
+  version: "{{versions.Pillow}}"
+  pypiurl: https://files.pythonhosted.org/packages/5b/bb/cdc8086db1f15d0664dd22a62c69613cdc00f1dd430b5b19df1bea83f2a3
+  description: |
+    Pillow is the friendly PIL fork by Alex Clark and Contributors. PIL is
+    the Python Imaging Library by Fredrik Lundh and Contributors. As of 2019,
+    Pillow development is supported by Tidelift
+  files:
+    - "{{root}}/lib/python{{python_family}}/site-packages/*"

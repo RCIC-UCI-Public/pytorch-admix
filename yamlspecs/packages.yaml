@@ -1,0 +1,8 @@
+---
+bootstrap:
+build:
+  - pytorch
+  - pytorch-module
+system:
+manifest:
+  - "{{build}}"

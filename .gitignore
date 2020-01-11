@@ -1,0 +1,11 @@
+# build files
+sources/*
+BUILD/
+RPMS/
+SOURCES/
+SPECS/
+cache/
+localrepo/
+yamlspecs/tmpbuild/
+yum.*
+yamlspecs/*.pkg

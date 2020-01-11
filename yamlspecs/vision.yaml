@@ -1,0 +1,11 @@
+!include pymodule.yaml
+---
+- package: vision
+  name: vision
+  version: "{{versions.vision}}"
+  vendor_source: https://github.com/pytorch/vision/archive/v{{version}}.{{extension}}
+  description: |
+    The torchvision package consists of popular datasets, model architectures,
+     and common image transformations for computer vision
+  files:
+    - "{{root}}/lib/python{{python_family}}/site-packages/*"

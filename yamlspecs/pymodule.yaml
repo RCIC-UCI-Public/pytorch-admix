@@ -1,0 +1,32 @@
+---
+- name: common
+  versions: !include versions.yaml
+  python_version: "{{versions.python_version}}"
+  python_family: "{{versions.python_family}}"
+  python_major: "{{versions.python_major}}"
+  cudaversion: "{{versions.cuda}}"
+  extension: tar.gz
+  compiler: gcc
+  compiler_version: "{{ versions.gcc }}"
+  vendor_source:  "{{pypiurl}}/{{name}}-{{version}}.{{extension}}"
+  pkgname: "pytorch-python{{python_version}}-{{name}}"
+  src_tarball: "{{name}}-{{version}}.{{extension}}"
+  src_dir: "{{name}}-{{version}}"
+  root: "{{pkg_defaults.app_path}}/python/{{python_version}}"
+  build:
+    configure: echo No configure required
+    modules: 
+      - "python/{{python_version}}"
+      - "{{compiler}}/{{compiler_version}}"
+    pkgmake: 
+    target: 
+#    pkgmake: python{{python_major}} ./setup.py  
+#    target: build
+  install:
+    makeinstall: python{{python_major}} setup.py install --root $(ROOT) 
+  requires:
+    python_{{python_version}}
+  files:
+    - "{{root}}/bin/*"
+    - "{{root}}/lib/python{{python_family}}/site-packages/*"
+  rpm: !include rpm.extras.yaml
