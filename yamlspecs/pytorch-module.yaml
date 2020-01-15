@@ -7,12 +7,10 @@
   category: AI-LEARNING
   module:
     prepend_path:
-      - PATH "{{pkg_defaults.app_path}}/{{name}}/{{version}}/bin"
-      - LD_LIBRARY_PATH "{{pkg_defaults.app_path}}/{{name}}/{{version}}/lib"
+      - PATH "{{pkg_defaults.app_path}}/python/{{python_version}}/bin"
     prereq:
       - foundation
       - python/{{python_version}}
-#      - cuda/{{versions.cuda}}
       - gcc/{{versions.gcc}}
       - mkl/{{versions.mkl}}
       - ffmpeg/{{versions.ffmpeg}}

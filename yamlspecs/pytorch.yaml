@@ -17,7 +17,6 @@
       - "mkl/{{versions.mkl}}"
       - "ffmpeg/{{versions.ffmpeg}}"
       - "fftw/{{versions.fftw}}"
-#      - "cuda/{{versions.cuda}}"
     pkgmake: >
       export USE_CUDA=0 USE_CUDNN=0;
       export USE_MKLDNN=1 USE_MKLDNN_CBLAS=1;
@@ -26,9 +25,9 @@
       export CMAKE_INCLUDE_PATH=/opt/apps/ffmpeg/4.1.3/include/:$$MKL_INCLUDE_DIR;
       python{{python_major}} ./setup.py build
     target: 
-  install:
-    makeinstall: >
-      python{{python_major}} setup.py install --root $(ROOT) 
+#  install:
+#    makeinstall: >
+#      python{{python_major}} setup.py install --root $(ROOT) 
   requires:
     - python_{{python_version}}  
     - python_{{python_version}}-numpy
