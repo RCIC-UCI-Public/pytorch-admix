@@ -19,7 +19,6 @@
       - cuda/{{versions.cuda}}
   requires:
     - "{{name}}_{{version}}_python{{python_version}}"
-    - foundation-ninja
     - python_{{python_version}}
     - python_{{python_version}}-numpy
     - python_{{python_version}}-six
