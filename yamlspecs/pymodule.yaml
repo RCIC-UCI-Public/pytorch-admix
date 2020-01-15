@@ -4,7 +4,6 @@
   python_version: "{{versions.python_version}}"
   python_family: "{{versions.python_family}}"
   python_major: "{{versions.python_major}}"
-  cudaversion: "{{versions.cuda}}"
   extension: tar.gz
   compiler: gcc
   compiler_version: "{{ versions.gcc }}"
@@ -20,8 +19,6 @@
       - "{{compiler}}/{{compiler_version}}"
     pkgmake: 
     target: 
-#    pkgmake: python{{python_major}} ./setup.py  
-#    target: build
   install:
     makeinstall: python{{python_major}} setup.py install --root $(ROOT) 
   requires:
