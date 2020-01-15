@@ -1,0 +1,47 @@
+!include pymodule.yaml
+---
+- package: pytorch 
+  name: pytorch
+  version: "{{versions.pytorch}}"
+  pkgname: "{{name}}-cuda_{{version}}_python{{python_version}}"
+  vendor_source: https://github.com/pytorch/pytorch/archive/v{{version}}.{{extension}}
+  description: |
+    PyTorch is a Python package that provides two high-level features
+    (1) Tensor computation (like NumPy) with strong GPU acceleration
+    (2) Deep neural networks built on a tape-based autograd system
+  build:
+    modules: 
+      - "python/{{python_version}}"
+      - "{{compiler}}/{{compiler_version}}"
+      - foundation
+      - "mkl/{{versions.mkl}}"
+      - "ffmpeg/{{versions.ffmpeg}}"
+      - "fftw/{{versions.fftw}}"
+      - "cuda/{{versions.cuda}}"
+    pkgmake: >
+      export USE_CUDA=1 USE_CUDNN=1;
+      export USE_MKLDNN=1 USE_MKLDNN_CBLAS=1;
+      export USE_FFMPEG=1;
+      export CUDA_HOME=$$CUDA_PATH;
+      export LIB=$$LD_LIBRARY_PATH;
+      export LD_RUN_PATH=/opt/apps/cuda/10.1.243/lib64:$$LD_RUN_PATH;
+      export CMAKE_INCLUDE_PATH=/opt/apps/ffmpeg/4.1.3/include:$$MKL_INCLUDE_DIR:$$CMAKE_INCLUDE_PATH;
+      export CMAKE_LIBRARY_PATH=$$LD_LIBRARY_PATH:$$CMAKE_LIBRARY_PATH;
+      python{{python_major}} ./setup.py build
+    target: 
+#  install:
+#    makeinstall: >
+#      python{{python_major}} setup.py install --root $(ROOT) 
+  requires:
+    - python_{{python_version}}  
+    - python_{{python_version}}-numpy
+    - python_{{python_version}}-six
+    - python_{{python_version}}-cffi
+    - python_{{python_version}}-PyYAML
+    - "{{compiler}}_{{compiler_version}}"
+    - "mkl_{{versions.mkl}}"
+    - "ffmpeg_{{versions.ffmpeg}}"
+    - "cuda_{{versions.cuda}}"
+    - "libcudnn{{versions.cudnn_major}}"
+    - "libcudnn{{versions.cudnn_major}}-doc"
+    - "libcudnn{{versions.cudnn_major}}-devel"
