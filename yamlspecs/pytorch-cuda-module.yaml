@@ -27,5 +27,5 @@
     - "gcc_{{versions.gcc}}"
     - "mkl_{{versions.mkl}}"
     - "ffmpeg_{{versions.ffmpeg}}"
-    - "cuda_{{versions.cuda}}"
+    - "cuda-toolkit_{{versions.cuda}}"
     - rcic-module-support
