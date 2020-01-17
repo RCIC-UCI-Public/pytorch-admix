@@ -9,7 +9,7 @@
     prepend_path:
       - PATH "{{pkg_defaults.app_path}}/python/{{python_version}}/bin"
     prereq:
-      - foundation
+#      - foundation
       - python/{{python_version}}
       - gcc/{{versions.gcc}}
       - mkl/{{versions.mkl}}
@@ -26,3 +26,4 @@
     - "mkl_{{versions.mkl}}"
     - "ffmpeg_{{versions.ffmpeg}}"
     - rcic-module-support
+  conflicts: "{{name}}-cuda_{{version}}_python{{python_version}}-module"

@@ -37,3 +37,4 @@
     - "{{compiler}}_{{compiler_version}}"
     - "mkl_{{versions.mkl}}"
     - "ffmpeg_{{versions.ffmpeg}}"
+  conflicts: "{{name}}-cuda_{{version}}_python{{python_version}}"
