@@ -3,6 +3,11 @@ bootstrap:
 build:
   - pytorch
   - pytorch-module
+  - pytorch-cuda
+  - pytorch-cuda-module
+  - vision
+  - vision-cuda
+  - Pillow-simd
 system:
 manifest:
   - "{{build}}"
