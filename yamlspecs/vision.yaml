@@ -2,23 +2,28 @@
 ---
 - package: vision
   name: vision
+  forcecuda: 0
+  suffix: ""
+  pkgname: "pytorch-python{{python_version}}-{{name}}{{suffix}}"
   version: "{{versions.vision}}"
   vendor_source: https://github.com/pytorch/vision/archive/v{{version}}.{{extension}}
   description: |
     The torchvision package consists of popular datasets, model architectures,
-     and common image transformations for computer vision
+    and common image transformations for computer vision
   build:
     configure: echo No configure required
     modules: 
+      - foundation
       - "pytorch/{{versions.pytorch}}"
     pkgmake: >
-      module unload cuda;
-      export LIBRARY_PATH=$$LD_LIBRARY_PATH;
-      export CMAKE_INCLUDE_PATH=/opt/apps/ffmpeg/4.1.3/include:$$MKL_INCLUDE_DIR:$$CMAKE_INCLUDE_PATH;
+      export FORCE_CUDA={{forcecuda}};
+      export CMAKE_INCLUDE_PATH=$$FFMPEG_INC:$$MKL_INCLUDE_DIR:$$CMAKE_INCLUDE_PATH;
       export CMAKE_LIBRARY_PATH=$$LD_LIBRARY_PATH:$$CMAKE_LIBRARY_PATH;
       python{{python_major}} ./setup.py build
-      #export LDFLAGS="$$LDFLAGS -Wl,-rpath,/opt/apps/fftw/3.3.8/lib -L/opt/apps/fftw/3.3.8/lib";
-      #export CUDA_HOME=$$CUDA_PATH;
-      #export FORCE_CUDA=1;
   files:
     - "{{root}}/lib/python{{python_family}}/site-packages/*"
+  requires:
+    - python_{{python_version}}
+    - pytorch{{suffix}}_{{versions.pytorch}}_python{{python_version}}
+    - pytorch-python{{python_version}}-pillow-simd
+  conflicts: "pytorch-python{{python_version}}-{{name}}-cuda"
