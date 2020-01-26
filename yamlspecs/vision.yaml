@@ -2,7 +2,7 @@
 ---
 - package: vision
   name: vision
-  forcecuda: 0
+  forcecuda: "0"
   suffix: ""
   pkgname: "pytorch-python{{python_version}}-{{name}}{{suffix}}"
   version: "{{versions.vision}}"

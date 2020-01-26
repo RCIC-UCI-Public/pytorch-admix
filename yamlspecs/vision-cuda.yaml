@@ -1,6 +1,6 @@
 !include vision.yaml
 ---
 - package: vision cuda enabled
-  forcecuda: 1
+  forcecuda: "1"
   suffix: -cuda
   conflicts: "pytorch-python{{python_version}}-{{name}}"
