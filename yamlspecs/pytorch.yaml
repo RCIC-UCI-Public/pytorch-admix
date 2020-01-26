@@ -1,9 +1,14 @@
 !include pymodule.yaml
 ---
 - package: pytorch 
+  basename: pytorch
   name: pytorch
+  forcecuda: "0"
+  suffix: ""
   version: "{{versions.pytorch}}"
-  pkgname: "{{name}}_{{version}}_python{{python_version}}"
+  pkgname: "{{basename}}{{suffix}}_{{version}}_python{{python_version}}"
+  src_tarball: "{{basename}}-{{version}}.{{extension}}"
+  src_dir: "{{basename}}-{{version}}"
   vendor_source: https://github.com/pytorch/pytorch/archive/v{{version}}.{{extension}}
   description: |
     PyTorch is a Python package that provides two high-level features
@@ -13,28 +18,27 @@
     modules: 
       - "python/{{python_version}}"
       - "{{compiler}}/{{compiler_version}}"
-      - foundation
+      - "foundation"
       - "mkl/{{versions.mkl}}"
       - "ffmpeg/{{versions.ffmpeg}}"
       - "fftw/{{versions.fftw}}"
     pkgmake: >
-      export USE_CUDA=0 USE_CUDNN=0;
+      export USE_CUDA={{forcecuda}} USE_CUDNN={{forcecuda}};
       export USE_MKLDNN=1 USE_MKLDNN_CBLAS=1;
       export USE_FFMPEG=1;
-      export LIB=$$LD_LIBRARY_PATH;
-      export CMAKE_INCLUDE_PATH=/opt/apps/ffmpeg/4.1.3/include/:$$MKL_INCLUDE_DIR;
+      export CMAKE_INCLUDE_PATH=$$FFMPEG_INC:$$MKL_INCLUDE_DIR:$$CMAKE_INCLUDE_PATH;
+      export CMAKE_LIBRARY_PATH=$$LD_LIBRARY_PATH:$$CMAKE_LIBRARY_PATH;
       python{{python_major}} ./setup.py build
-    target: 
-#  install:
-#    makeinstall: >
-#      python{{python_major}} setup.py install --root $(ROOT) 
+#?      export LIB=$$LD_LIBRARY_PATH;
+#      export CMAKE_INCLUDE_PATH=/opt/apps/ffmpeg/4.1.3/include/:$$MKL_INCLUDE_DIR;
+#    target: 
   requires:
-    - python_{{python_version}}  
-    - python_{{python_version}}-numpy
-    - python_{{python_version}}-six
-    - python_{{python_version}}-cffi
-    - python_{{python_version}}-PyYAML
+    - "python_{{python_version}}"
+    - "python_{{python_version}}-numpy"
+    - "python_{{python_version}}-six"
+    - "python_{{python_version}}-cffi"
+    - "python_{{python_version}}-PyYAML"
     - "{{compiler}}_{{compiler_version}}"
     - "mkl_{{versions.mkl}}"
     - "ffmpeg_{{versions.ffmpeg}}"
-  conflicts: "{{name}}-cuda_{{version}}_python{{python_version}}"
+  conflicts: "{{basename}}-cuda_{{version}}_python{{python_version}}"

@@ -3,14 +3,13 @@
 !include rcic-module.yaml
 ---
 - package: pytorch module
-  pkgname: "{{name}}_{{version}}_python{{python_version}}-module"
+  pkgname: "{{basename}}{{suffix}}_{{version}}_python{{python_version}}-module"
   category: AI-LEARNING
   module:
     path: "{{pkg_defaults.module.RCICmpath}}/{{category}}/{{basename}}"
     prepend_path:
       - PATH "{{pkg_defaults.app_path}}/python/{{python_version}}/bin"
     prereq:
-#      - foundation
       - python/{{python_version}}
       - gcc/{{versions.gcc}}
       - mkl/{{versions.mkl}}
@@ -18,7 +17,7 @@
       - fftw/{{versions.fftw}}
       - cuda/{{versions.cuda}}
   requires:
-    - "{{name}}_{{version}}_python{{python_version}}"
+    - "{{basename}}{{suffix}}_{{version}}_python{{python_version}}"
     - python_{{python_version}}
     - python_{{python_version}}-numpy
     - python_{{python_version}}-six
@@ -27,6 +26,6 @@
     - "gcc_{{versions.gcc}}"
     - "mkl_{{versions.mkl}}"
     - "ffmpeg_{{versions.ffmpeg}}"
-    - "cuda-toolkit_{{versions.cuda}}"
+    - cuda-toolkit_{{versions.cuda}}
     - rcic-module-support
   conflicts: "{{basename}}_{{version}}_python{{python_version}}-module"
