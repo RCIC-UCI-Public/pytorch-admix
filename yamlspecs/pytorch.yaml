@@ -29,9 +29,6 @@
       export CMAKE_INCLUDE_PATH=$$FFMPEG_INC:$$MKL_INCLUDE_DIR:$$CMAKE_INCLUDE_PATH;
       export CMAKE_LIBRARY_PATH=$$LD_LIBRARY_PATH:$$CMAKE_LIBRARY_PATH;
       python{{python_major}} ./setup.py build
-#?      export LIB=$$LD_LIBRARY_PATH;
-#      export CMAKE_INCLUDE_PATH=/opt/apps/ffmpeg/4.1.3/include/:$$MKL_INCLUDE_DIR;
-#    target: 
   requires:
     - "python_{{python_version}}"
     - "python_{{python_version}}-numpy"
