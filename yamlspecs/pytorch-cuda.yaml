@@ -7,31 +7,11 @@
   addfile: 
     - "filter-requires-{{name}}.sh"
   build:
-    modules: 
-      - "python/{{python_version}}"
-      - "{{compiler}}/{{compiler_version}}"
-      - "foundation"
-      - "mkl/{{versions.mkl}}"
-      - "ffmpeg/{{versions.ffmpeg}}"
-      - "fftw/{{versions.fftw}}"
+    modules:
+      - "{{build.base_modules}}"
       - "cuda/{{versions.cuda}}"
-    pkgmake: >
-      export USE_CUDA={{forcecuda}} USE_CUDNN={{forcecuda}};
-      export USE_MKLDNN=1 USE_MKLDNN_CBLAS=1;
-      export USE_FFMPEG=1;
-      export LIBRARY_PATH=$$LD_LIBRARY_PATH;
-      export CMAKE_INCLUDE_PATH=$$FFMPEG_INC:$$MKL_INCLUDE_DIR:$$CMAKE_INCLUDE_PATH;
-      export CMAKE_LIBRARY_PATH=$$LD_LIBRARY_PATH:$$CMAKE_LIBRARY_PATH;
-      python{{python_major}} ./setup.py build
   requires:
-    - "python_{{python_version}}"
-    - "python_{{python_version}}-numpy"
-    - "python_{{python_version}}-six"
-    - "python_{{python_version}}-cffi"
-    - "python_{{python_version}}-PyYAML"
-    - "{{compiler}}_{{compiler_version}}"
-    - "mkl_{{versions.mkl}}"
-    - "ffmpeg_{{versions.ffmpeg}}"
+    - "{{base_requires}}"
     - "cuda-toolkit_{{versions.cuda}}"
     - "libcudnn{{versions.cudnn_major}}"
   rpm: !include rpm.extras.filter.yaml

@@ -6,24 +6,28 @@
   pkgname: "{{basename}}{{suffix}}_{{version}}_python{{python_version}}-module"
   category: AI-LEARNING
   module:
-    path: "{{pkg_defaults.module.RCICmpath}}/{{category}}/{{basename}}"
+    path: "{{pkg_defaults.RCICmpath}}/{{category}}/{{basename}}"
     prepend_path:
       - PATH "{{pkg_defaults.app_path}}/python/{{python_version}}/bin"
     prereq:
+      - "{{module.base_prereq}}"
+    base_prereq:
       - python/{{python_version}}
       - gcc/{{versions.gcc}}
       - mkl/{{versions.mkl}}
       - ffmpeg/{{versions.ffmpeg}}
       - fftw/{{versions.fftw}}
   requires:
+    - "{{base_requires}}"
+  base_requires:
     - "{{basename}}{{suffix}}_{{version}}_python{{python_version}}"
     - python_{{python_version}}
     - python_{{python_version}}-numpy
     - python_{{python_version}}-six
     - python_{{python_version}}-cffi
     - python_{{python_version}}-PyYAML
-    - "gcc_{{versions.gcc}}"
-    - "mkl_{{versions.mkl}}"
-    - "ffmpeg_{{versions.ffmpeg}}"
+    - gcc_{{versions.gcc}}
+    - mkl_{{versions.mkl}}
+    - ffmpeg_{{versions.ffmpeg}}
     - rcic-module-support
   conflicts: "{{basename}}-cuda_{{version}}_python{{python_version}}-module"

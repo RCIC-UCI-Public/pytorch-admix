@@ -1,31 +1,17 @@
 # bild the module for pytorch
 !include pytorch-cuda.yaml
-!include rcic-module.yaml
+!include pytorch-module.yaml
 ---
-- package: pytorch module
-  pkgname: "{{basename}}{{suffix}}_{{version}}_python{{python_version}}-module"
-  category: AI-LEARNING
+- package: pytorch cuda module
+  shortname: pytorch
+  suffix: "-cuda"
+  forcecuda: "1"
+  name: pytorch-cuda
   module:
-    path: "{{pkg_defaults.module.RCICmpath}}/{{category}}/{{basename}}"
-    prepend_path:
-      - PATH "{{pkg_defaults.app_path}}/python/{{python_version}}/bin"
     prereq:
-      - python/{{python_version}}
-      - gcc/{{versions.gcc}}
-      - mkl/{{versions.mkl}}
-      - ffmpeg/{{versions.ffmpeg}}
-      - fftw/{{versions.fftw}}
+      - "{{module.base_prereq}}"
       - cuda/{{versions.cuda}}
   requires:
-    - "{{basename}}{{suffix}}_{{version}}_python{{python_version}}"
-    - python_{{python_version}}
-    - python_{{python_version}}-numpy
-    - python_{{python_version}}-six
-    - python_{{python_version}}-cffi
-    - python_{{python_version}}-PyYAML
-    - "gcc_{{versions.gcc}}"
-    - "mkl_{{versions.mkl}}"
-    - "ffmpeg_{{versions.ffmpeg}}"
+    - "{{base_requires}}"
     - cuda-toolkit_{{versions.cuda}}
-    - rcic-module-support
   conflicts: "{{basename}}_{{version}}_python{{python_version}}-module"
