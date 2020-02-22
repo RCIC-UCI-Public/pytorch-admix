@@ -9,5 +9,6 @@ build:
   - vision-cuda
   - Pillow-simd
 system:
+  - foundation-ninja
 manifest:
   - "{{build}}"
