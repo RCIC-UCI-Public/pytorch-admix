@@ -1,14 +1,35 @@
+# This packages.yaml is a bit odd. The standard bootstrap and manifest will generate
+# the non-cuda versions. Pytorch cuda and pytorch conflict with each other, but both can be built
+# on a non-gpu host.
+# the default manifest is for a non-cuda node
+# the default build will build everything
 ---
 bootstrap:
-build:
   - pytorch
   - pytorch-module
+
+cudabuild:
   - pytorch-cuda
   - pytorch-cuda-module
-  - vision
   - vision-cuda
+
+nocudabuild:
+  - vision
+  - "{{common}}" 
+
+common:
   - Pillow-simd
+
+build:
+  - "{{nocudabuild}}"
+  - "{{cudabuild}}"
+  
 system:
-  - foundation-ninja
+
 manifest:
-  - "{{build}}"
+  - "{{bootstrap}}"
+  - "{{nocudabuild}}"
+
+cudamanifest:
+  - "{{cudabuild}}"
+  - "{{common}}"
