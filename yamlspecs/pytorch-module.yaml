@@ -21,13 +21,10 @@
     - "{{base_requires}}"
   base_requires:
     - "{{basename}}{{suffix}}_{{version}}_python{{python_version}}"
-    - python_{{python_version}}
-    - python_{{python_version}}-numpy
-    - python_{{python_version}}-six
-    - python_{{python_version}}-cffi
-    - python_{{python_version}}-PyYAML
-    - gcc_{{versions.gcc}}
-    - mkl_{{versions.mkl}}
-    - ffmpeg_{{versions.ffmpeg}}
+    - python_{{python_version}}-module
+    - gcc_{{versions.gcc}}-module
+    - mkl_{{versions.mkl}}-module
+    - ffmpeg_{{versions.ffmpeg}}-module
+    - fftw_{{versions.fftw}}-module
     - rcic-module-support
   conflicts: "{{basename}}-cuda_{{version}}_python{{python_version}}-module"

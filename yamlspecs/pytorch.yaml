@@ -43,4 +43,5 @@
     - python_{{python_version}}-PyYAML
     - mkl_{{versions.mkl}}
     - ffmpeg_{{versions.ffmpeg}}
+    - fftw_{{versions.fftw}}
   conflicts: "{{basename}}-cuda_{{version}}_python{{python_version}}"
