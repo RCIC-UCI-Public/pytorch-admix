@@ -12,18 +12,25 @@ Admix for pytorch
 
 ## Notes
 
-On a VM with 2CPU and 8Gb memory it takes 
-- for building pytorch RPMs:
+- Building RPMS on a VM with 2CPU and 8Gb memory requires:
 
-  - ~3hrs for pytorch
-  - ~11hrs for pytorch-cuda
-  - 11Gb of space in BUILD/
+  - 3hrs  + 3Gb  space in BUILD for pytorch
+  - 11hrs + 11Gb space in BUILD for pytorch-cuda
 
-  It is important to have ninja installed before building pytorch.
+
+- Building on a VM with 16CPU and 16Gb memory failed for pytorch-cuda due to
+  some compilations processes being killed by the OS for luck of memory. 
+  The build uses all available CPUs and all available memory. 
+  After adding a 4Gb swap space the build was successful:
+  
+  - ~0.5hr for pytorch
+  - ~2hrs  for pytorch-cuda  
+
+- It is important to have ninja installed before building pytorch.
   Ninja is provided by foundation-ninja RPM from foundation-admix.
   Without ninja the build time for pytorch and pytorch-cuda doubles 
   as cmake is rebuilding all the objects created during the "build"
-  stage again in the "install" stage. 
+  stage again in the "install" stage.
 
 - for building torchvision:
 
