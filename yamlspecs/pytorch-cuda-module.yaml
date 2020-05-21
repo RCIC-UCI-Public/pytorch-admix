@@ -9,9 +9,9 @@
   name: pytorch-cuda
   module:
     prereq:
-      - "{{module.base_prereq}}"
+      - *base_prereq
       - cuda/{{versions.cuda}}
-  requires:
-    - "{{base_requires}}"
-    - cuda-toolkit_{{versions.cuda}}
+    requires:
+      - *base_requires
+      - cuda_{{versions.cuda}}-module
   conflicts: "{{basename}}_{{version}}_python{{python_version}}-module"

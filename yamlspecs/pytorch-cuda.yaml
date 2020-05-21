@@ -13,7 +13,7 @@
   requires:
     - "{{base_requires}}"
     - "cuda-toolkit_{{versions.cuda}}"
-    - "libcudnn{{versions.cudnn_major}}"
+    - "libcudnn{{versions.cudnn_major}}-devel"
   install:
     makeinstall: export LIBRARY_PATH=$$LD_LIBRARY_PATH; python{{python_major}} setup.py install --root $(ROOT) 
   rpm: !include rpm.extras.filter.yaml

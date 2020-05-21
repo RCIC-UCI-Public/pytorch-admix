@@ -4,14 +4,13 @@
   name: vision
   forcecuda: "0"
   suffix: ""
-  pkgname: "pytorch-python{{python_version}}-{{name}}{{suffix}}"
+  baserpm: "pytorch-python{{python_version}}-{{name}}{{suffix}}"
   version: "{{versions.vision}}"
   vendor_source: https://github.com/pytorch/vision/archive/v{{version}}.{{extension}}
   description: |
     The torchvision package consists of popular datasets, model architectures,
     and common image transformations for computer vision
   build:
-    configure: echo No configure required
     modules: 
       - foundation
       - "pytorch/{{versions.pytorch}}"
@@ -20,8 +19,6 @@
       export CMAKE_INCLUDE_PATH=$$FFMPEG_INC:$$MKL_INCLUDE_DIR:$$CMAKE_INCLUDE_PATH;
       export CMAKE_LIBRARY_PATH=$$LD_LIBRARY_PATH:$$CMAKE_LIBRARY_PATH;
       python{{python_major}} ./setup.py build
-  files:
-    - "{{root}}/lib/python{{python_family}}/site-packages/*"
   requires:
     - python_{{python_version}}
     - pytorch{{suffix}}_{{versions.pytorch}}_python{{python_version}}

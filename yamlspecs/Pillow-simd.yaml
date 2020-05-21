@@ -10,5 +10,3 @@
     multiple data and its essence is in performing the same operation on multiple 
     data points simultaneously by using multiple processing elements. 
     Currently, Pillow-SIMD can be compiled with SSE4 (default) or AVX2 support.
-  files:
-    - "{{root}}/lib/python{{python_family}}/site-packages/*"

@@ -6,7 +6,7 @@
   forcecuda: "0"
   suffix: ""
   version: "{{versions.pytorch}}"
-  pkgname: "{{basename}}{{suffix}}_{{version}}_python{{python_version}}"
+  baserpm: "{{basename}}{{suffix}}_{{version}}_python{{python_version}}"
   src_tarball: "{{basename}}-{{version}}.{{extension}}"
   src_dir: "{{basename}}-{{version}}"
   vendor_source: https://github.com/pytorch/pytorch/archive/v{{version}}.{{extension}}
@@ -40,7 +40,7 @@
     - python_{{python_version}}-numpy
     - python_{{python_version}}-six
     - python_{{python_version}}-cffi
-    - python_{{python_version}}-PyYAML
+    - python_{{python_version}}-pyyaml
     - mkl_{{versions.mkl}}
     - ffmpeg_{{versions.ffmpeg}}
     - fftw_{{versions.fftw}}
