@@ -1,4 +1,5 @@
 !include pytorch.yaml
+!include rpm.yaml
 ---
 - package: pytorch cuda-enabled
   suffix: "-cuda"
@@ -16,5 +17,5 @@
     - "libcudnn{{versions.cudnn_major}}-devel"
   install:
     makeinstall: export LIBRARY_PATH=$$LD_LIBRARY_PATH; python{{python_major}} setup.py install --root $(ROOT) 
-  rpm: !include rpm.extras.filter.yaml
   conflicts: "{{basename}}_{{version}}_python{{python_version}}"
+  rpmFilters: *Requires
