@@ -18,4 +18,4 @@
   install:
     makeinstall: export LIBRARY_PATH=$$LD_LIBRARY_PATH; python{{python_major}} setup.py install --root $(ROOT) 
   conflicts: "{{basename}}_{{version}}_python{{python_version}}"
-  rpmFilters: *Requires
+  rpmFilters: *filterRequires
