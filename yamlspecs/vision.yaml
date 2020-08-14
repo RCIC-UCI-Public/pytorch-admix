@@ -2,6 +2,7 @@
 ---
 - package: vision
   name: vision
+  release: 2
   forcecuda: "0"
   suffix: ""
   baserpm: "pytorch-python{{python_version}}-{{name}}{{suffix}}"
@@ -21,6 +22,5 @@
       python{{python_major}} ./setup.py build
   requires:
     - python_{{python_version}}
-    - pytorch{{suffix}}_{{versions.pytorch}}_python{{python_version}}
     - pytorch-python{{python_version}}-pillow-simd
   conflicts: "pytorch-python{{python_version}}-{{name}}-cuda"

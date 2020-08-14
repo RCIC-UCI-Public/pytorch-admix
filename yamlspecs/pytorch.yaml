@@ -26,7 +26,7 @@
       - fftw/{{versions.fftw}}
     pkgmake: >
       export USE_CUDA={{forcecuda}} USE_CUDNN={{forcecuda}};
-      export USE_MKLDNN=1 USE_MKLDNN_CBLAS=1;
+      export USE_MKLDNN=0 USE_MKLDNN_CBLAS=1 DNNL_CPU_RUNTIME=OMP;
       export USE_FFMPEG=1;
       export LIBRARY_PATH=$$LD_LIBRARY_PATH;
       export CMAKE_INCLUDE_PATH=$$FFMPEG_INC:$$MKL_INCLUDE_DIR:$$CMAKE_INCLUDE_PATH;
