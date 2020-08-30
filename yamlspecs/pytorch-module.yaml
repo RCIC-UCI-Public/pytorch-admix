@@ -4,10 +4,12 @@
 ---
 - package: pytorch module
   category: AI-LEARNING
+
   module:
     path: "{{pkg_defaults.RCICmpath}}/{{category}}/{{basename}}"
     prepend_path:
       - PATH "{{pkg_defaults.app_path}}/python/{{python_version}}/bin"
+
     base_prereq: &base_prereq
       - python/{{python_version}}
       - gcc/{{versions.gcc}}
@@ -16,14 +18,10 @@
       - fftw/{{versions.fftw}}
     base_requires: &base_requires
       - "{{basename}}{{suffix}}_{{version}}_python{{python_version}}"
-      - python_{{python_version}}-module
-      - gcc_{{versions.gcc}}-module
-      - mkl_{{versions.mkl}}-module
-      - ffmpeg_{{versions.ffmpeg}}-module
-      - fftw_{{versions.fftw}}-module
       - rcic-module-support
     prereq:
       - *base_prereq
     requires:
       - *base_requires
+      - "{{module.prereq}}"
   conflicts: "{{basename}}-cuda_{{version}}_python{{python_version}}-module"

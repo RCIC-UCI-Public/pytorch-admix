@@ -1,5 +1,4 @@
 # bild the module for pytorch
-!include pytorch-cuda.yaml
 !include pytorch-module.yaml
 ---
 - package: pytorch cuda module
@@ -13,5 +12,5 @@
       - cuda/{{versions.cuda}}
     requires:
       - *base_requires
-      - cuda_{{versions.cuda}}-module
+      - "{{module.prereq}}" 
   conflicts: "{{basename}}_{{version}}_python{{python_version}}-module"
