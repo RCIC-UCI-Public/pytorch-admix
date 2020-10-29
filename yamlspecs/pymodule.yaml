@@ -23,4 +23,3 @@
     python_{{python_version}}
   files:
     - "{{root}}"
-#  rpm: !include rpm.extras.yaml
