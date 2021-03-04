@@ -16,7 +16,7 @@
       - gcc/{{versions.gcc}}
       - mkl/{{versions.mkl}}
       - ffmpeg/{{versions.ffmpeg}}
-      - fftw/{{versions.fftw}}
+      - fftw/{{versions.fftw}}/{{compiler}}.{{compiler_version}}
     base_requires: &base_requires
       - "{{basename}}{{suffix}}_{{version}}_python{{python_version}}"
       - rcic-module-support

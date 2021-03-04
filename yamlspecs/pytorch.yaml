@@ -3,6 +3,7 @@
 - package: pytorch 
   basename: pytorch
   name: pytorch
+  release: 2
   forcecuda: "0"
   suffix: ""
   version: "{{versions.pytorch}}"
@@ -23,7 +24,7 @@
       - foundation
       - mkl/{{versions.mkl}}
       - ffmpeg/{{versions.ffmpeg}}
-      - fftw/{{versions.fftw}}
+      - fftw/{{versions.fftw}}/{{compiler}}.{{compiler_version}}
     pkgmake: >
       export USE_CUDA={{forcecuda}} USE_CUDNN={{forcecuda}};
       export USE_MKLDNN=0 USE_MKLDNN_CBLAS=1 DNNL_CPU_RUNTIME=OMP;
@@ -43,5 +44,5 @@
     - python_{{python_version}}-pyyaml
     - mkl_{{versions.mkl}}
     - ffmpeg_{{versions.ffmpeg}}
-    - fftw_{{versions.fftw}}
+    - fftw_{{versions.fftw}}_{{compiler}}_{{compiler_version}}
   conflicts: "{{basename}}-cuda_{{version}}_python{{python_version}}"
