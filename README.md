@@ -26,6 +26,16 @@ Admix for pytorch
   - ~0.5hr for pytorch
   - ~2hrs  for pytorch-cuda  
 
+  Create 4Gb swap:
+
+  ```bash
+  dd if=/dev/zero of=/swapfile count=4096 bs=1MiB
+  chmod 600 /swapfile
+  mkswap /swapfile
+  swapon /swapfile
+  swapon -s  # verify
+  ```
+
 - It is important to have ninja installed before building pytorch.
   Ninja is provided by foundation-ninja RPM from foundation-admix.
   Without ninja the build time for pytorch and pytorch-cuda doubles 
@@ -36,5 +46,3 @@ Admix for pytorch
 
   - need pytorch to build vision
   - need pytorch-cuda to build CUDA-enabled vision-cuda 
-
-
