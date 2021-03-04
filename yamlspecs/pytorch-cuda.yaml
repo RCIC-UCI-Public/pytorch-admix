@@ -1,5 +1,4 @@
 !include pytorch.yaml
-!include rpm.yaml
 ---
 - package: pytorch cuda-enabled
   suffix: "-cuda"
