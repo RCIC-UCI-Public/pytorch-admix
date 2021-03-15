@@ -5,11 +5,12 @@
 - package: pytorch module
   category: AI-LEARNING
 
-  release: 2
+  release: 3
   module:
     path: "{{pkg_defaults.RCICmpath}}/{{category}}/{{basename}}"
     prepend_path:
-      - PATH "{{pkg_defaults.app_path}}/python/{{python_version}}/bin"
+      - PATH "{{root}}/bin"
+      - PYTHONPATH "{{root}}/lib/python{{python_family}}/site-packages"
 
     base_prereq: &base_prereq
       - python/{{python_version}}

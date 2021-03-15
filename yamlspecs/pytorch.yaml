@@ -3,7 +3,7 @@
 - package: pytorch 
   basename: pytorch
   name: pytorch
-  release: 2
+  release: 3
   forcecuda: "0"
   suffix: ""
   version: "{{versions.pytorch}}"
@@ -11,6 +11,7 @@
   src_tarball: "{{basename}}-{{version}}.{{extension}}"
   src_dir: "{{basename}}-{{version}}"
   vendor_source: https://github.com/pytorch/pytorch/archive/v{{version}}.{{extension}}
+  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}"
   description: |
     PyTorch is a Python package that provides two high-level features
     (1) Tensor computation (like NumPy) with strong GPU acceleration
@@ -33,6 +34,9 @@
       export CMAKE_INCLUDE_PATH=$$FFMPEG_INC:$$MKL_INCLUDE_DIR:$$CMAKE_INCLUDE_PATH;
       export CMAKE_LIBRARY_PATH=$$LD_LIBRARY_PATH:$$CMAKE_LIBRARY_PATH;
       python{{python_major}} ./setup.py build
+  install:
+    makeinstall: python{{python_major}} setup.py install --root $(ROOT) --prefix={{root}}
+
   requires:
     - "{{base_requires}}"
   base_requires:
