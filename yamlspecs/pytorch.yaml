@@ -19,10 +19,10 @@
   build:
     modules: 
       - "{{build.base_modules}}"
+      - foundation
     base_modules: 
       - "{{compiler}}/{{compiler_version}}"
       - python/{{python_version}}
-      - foundation
       - mkl/{{versions.mkl}}
       - ffmpeg/{{versions.ffmpeg}}
       - fftw/{{versions.fftw}}/{{compiler}}.{{compiler_version}}
@@ -36,7 +36,6 @@
       python{{python_major}} ./setup.py build
   install:
     makeinstall: python{{python_major}} setup.py install --root $(ROOT) --prefix={{root}}
-
   requires:
     - "{{base_requires}}"
   base_requires:

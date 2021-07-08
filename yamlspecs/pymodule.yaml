@@ -8,15 +8,12 @@
   python_family: "{{versions.python_family}}"
   python_major: "{{versions.python_major}}"
   compiler: gcc
-  compiler_version: "{{ versions.gcc }}"
+  compiler_version: "{{versions.gcc}}"
   root: "{{pkg_defaults.app_path}}/python/{{python_version}}"
   build:
-    configure: echo No configure required
     modules: 
       - "python/{{python_version}}"
       - "{{compiler}}/{{compiler_version}}"
-    pkgmake: 
-    target: 
   install:
     makeinstall: python{{python_major}} setup.py install --root $(ROOT) 
   requires:

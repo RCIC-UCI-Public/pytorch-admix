@@ -4,26 +4,12 @@
 ---
 - package: pytorch module
   category: AI-LEARNING
-
   release: 3
   module:
     path: "{{pkg_defaults.RCICmpath}}/{{category}}/{{basename}}"
     prepend_path:
       - PATH "{{root}}/bin"
       - PYTHONPATH "{{root}}/lib/python{{python_family}}/site-packages"
-
-    base_prereq: &base_prereq
-      - python/{{python_version}}
-      - gcc/{{versions.gcc}}
-      - mkl/{{versions.mkl}}
-      - ffmpeg/{{versions.ffmpeg}}
-      - fftw/{{versions.fftw}}/{{compiler}}.{{compiler_version}}
-    base_requires: &base_requires
-      - "{{basename}}{{suffix}}_{{version}}_python{{python_version}}"
-      - rcic-module-support
     prereq:
-      - *base_prereq
-    requires:
-      - *base_requires
-      - "{{module.prereq}}"
+      - "{{build.base_modules}}"
   conflicts: "{{basename}}-cuda_{{version}}_python{{python_version}}-module"
