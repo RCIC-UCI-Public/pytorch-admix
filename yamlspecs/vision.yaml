@@ -4,7 +4,7 @@
   name: vision
   release: 2
   forcecuda: "0"
-  suffix: ""
+  suffix:
   baserpm: "pytorch-python{{python_version}}-{{name}}{{suffix}}"
   version: "{{versions.vision}}"
   vendor_source: https://github.com/pytorch/vision/archive/v{{version}}.{{extension}}

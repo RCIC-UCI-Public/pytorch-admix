@@ -5,7 +5,7 @@
   name: pytorch
   release: 3
   forcecuda: "0"
-  suffix: ""
+  suffix:
   version: "{{versions.pytorch}}"
   baserpm: "{{basename}}{{suffix}}_{{version}}_python{{python_version}}"
   src_tarball: "{{basename}}-{{version}}.{{extension}}"
