@@ -9,7 +9,7 @@
     path: "{{pkg_defaults.RCICmpath}}/{{category}}/{{basename}}"
     prepend_path:
       - PATH "{{root}}/bin"
-      - PYTHONPATH "{{root}}/lib/python{{python_family}}/site-packages"
+      - PYTHONPATH "{{root}}/lib/python{{python_major}}/site-packages"
     prereq:
       - "{{build.base_modules}}"
   conflicts: "{{basename}}-cuda_{{version}}_python{{python_version}}-module"

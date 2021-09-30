@@ -4,10 +4,9 @@
 - package: pytorch-cuda module
   shortname: pytorch
   suffix: "-cuda"
-  forcecuda: "1"
   name: pytorch-cuda
   module:
     prereq:
       - "{{build.base_modules}}"
-      - cuda/{{versions.cuda}}
+      - cuda/{{versions.cuda.version}}
   conflicts: "{{basename}}_{{version}}_python{{python_version}}-module"

@@ -9,11 +9,11 @@
   build:
     modules:
       - "{{build.base_modules}}"
-      - "cuda/{{versions.cuda}}"
+      - "cuda/{{versions.cuda.version}}"
       - foundation
   requires:
     - "{{base_requires}}"
-    - "cuda-toolkit_{{versions.cuda}}"
+    - "cuda-toolkit_{{versions.cuda.version}}"
     - "libcudnn{{versions.cudnn_major}}-devel"
   install:
     makeinstall: export LIBRARY_PATH=$$LD_LIBRARY_PATH; python{{python_major}} setup.py install --root $(ROOT) --prefix={{root}} 
