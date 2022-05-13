@@ -10,7 +10,7 @@
     modules:
       - "{{build.base_modules}}"
       - "cuda/{{versions.cuda.version}}"
-      - foundation
+      - foundation/{{versions.foundation}}
   requires:
     - "{{base_requires}}"
     - "cuda-toolkit_{{versions.cuda.version}}"

@@ -13,7 +13,7 @@
     and common image transformations for computer vision
   build:
     modules: 
-      - foundation
+      - foundation/{{versions.foundation}}
       - "pytorch/{{versions.pytorch}}"
     pkgmake: >
       export FORCE_CUDA={{forcecuda}};
