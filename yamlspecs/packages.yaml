@@ -26,3 +26,5 @@ manifest:
 cudamanifest:
   - "{{cudabuild}}"
   - "{{common}}"
+sets:
+  - centos8
