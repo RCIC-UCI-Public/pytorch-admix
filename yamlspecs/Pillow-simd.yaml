@@ -3,7 +3,7 @@
 - package: pillow-simd
   name: pillow-simd
   version: "{{versions.pillow_simd}}"
-  vendor_source: https://github.com/uploadcare/pillow-simd/archive/v{{version}}.{{extension}}
+  vendor_source: https://github.com/uploadcare/pillow-simd/archive/{{versions.pillow_simd_pref}}{{version}}.{{extension}}
   description: |
     Pillow-SIMD is following Pillow. Pillow-SIMD versions are 100% compatible drop-in 
     replacements for Pillow of the same version. SIMD stands for single instuction, 
