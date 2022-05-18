@@ -3,6 +3,8 @@
 # but both can be built  on a non-gpu host.
 # the default manifest is for a non-cuda node
 # the default build will build everything
+#
+# See ../README.md about how to set libcudnn
 ---
 system:
 bootstrap:
@@ -16,7 +18,7 @@ nocudabuild:
   - vision
   - "{{common}}" 
 common:
-  - Pillow-simd
+  - pillow-simd
 build:
   - "{{nocudabuild}}"
   - "{{cudabuild}}"
