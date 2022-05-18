@@ -2,20 +2,27 @@
 !include rpm.yaml
 ---
 - name: common
-  baserpm: "pytorch-python{{python_version}}-{{name}}"
+  tname: pytorch
+  tversion: "{{versions.pytorch}}"
+  cuda: "{{versions.cuda.name}}"
+  cuda_version: "{{versions.cuda.version}}"
+  basefamily: "{{tname}}_{{tversion}}_python{{python_version}}"
+  withcuda: "_{{cuda}}_{{cuda_version}}"
+  nocuda:
+  cudasuffix: "{{nocuda}}"
+  baserpm: "{{basefamily}}{{cudasuffix}}_{{name}}"
   versions: !include versions.yaml
   python_version: "{{versions.python3}}"
   python_major: "{{versions.python3_major}}"
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
-  root: "{{pkg_defaults.app_path}}/python/{{python_version}}"
+  parent: "{{pkg_defaults.app_path}}/{{tname}}"
+  root: "{{parent}}/{{tversion}}"
   build:
     modules: 
       - "python/{{python_version}}"
       - "{{compiler}}/{{compiler_version}}"
   install:
-    makeinstall: python{{python_major}} setup.py install --root $(ROOT) 
+    makeinstall: python{{python_major}} setup.py install --root $(ROOT) --prefix {{root}}
   requires:
     python_{{python_version}}
-  files:
-    - "{{root}}"

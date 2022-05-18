@@ -10,6 +10,7 @@
     prepend_path:
       - PATH "{{root}}/bin"
       - PYTHONPATH "{{root}}/lib/python{{python_major}}/site-packages"
+      - LD_LIBRARY_PATH "{{root}}/lib/python{{python_major}}/site-packages/torch/lib"
     prereq:
       - "{{build.base_modules}}"
-  conflicts: "{{basename}}-cuda_{{version}}_python{{python_version}}-module"
+  conflicts: "{{basefamily}}{{withcuda}}-module"

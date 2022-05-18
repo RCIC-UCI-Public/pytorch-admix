@@ -5,12 +5,12 @@
   name: pytorch
   release: 3
   forcecuda: "0"
-  suffix:
   version: "{{versions.pytorch}}"
-  baserpm: "{{basename}}{{suffix}}_{{version}}_python{{python_version}}"
+  version_str: "{{versions.pytorch_str}}"
+  baserpm: "{{basefamily}}{{cudasuffix}}"
   src_tarball: "{{basename}}-{{version}}.{{extension}}"
-  src_dir: "{{basename}}-{{version}}"
-  vendor_source: https://github.com/pytorch/pytorch/archive/v{{version}}.{{extension}}
+  src_dir: "{{basename}}-{{version_str}}{{version}}"
+  vendor_source: https://github.com/pytorch/pytorch/releases/download/v{{version}}/pytorch-v{{version}}.{{extension}}
   root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}"
   description: |
     PyTorch is a Python package that provides two high-level features
@@ -19,7 +19,7 @@
   build:
     modules: 
       - "{{build.base_modules}}"
-      - foundation
+      - foundation/{{versions.foundation}}
     base_modules: 
       - "{{compiler}}/{{compiler_version}}"
       - python/{{python_version}}
@@ -48,4 +48,4 @@
     - mkl_{{versions.mkl}}
     - ffmpeg_{{versions.ffmpeg}}
     - fftw_{{versions.fftw}}_{{compiler}}_{{compiler_version}}
-  conflicts: "{{basename}}-cuda_{{version}}_python{{python_version}}"
+  conflicts: "{{basefamily}}{{withcuda}}"

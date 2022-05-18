@@ -1,9 +1,8 @@
 !include pytorch.yaml
 ---
 - package: pytorch cuda-enabled
-  suffix: "-cuda"
+  cudasuffix: "{{withcuda}}"
   forcecuda: "1"
-  name: pytorch-cuda
   addfile: 
     - "filter-requires-{{name}}.sh"
   build:
@@ -17,5 +16,5 @@
     - "libcudnn{{versions.cudnn_major}}-devel"
   install:
     makeinstall: export LIBRARY_PATH=$$LD_LIBRARY_PATH; python{{python_major}} setup.py install --root $(ROOT) --prefix={{root}} 
-  conflicts: "{{basename}}_{{version}}_python{{python_version}}"
+  conflicts: "{{basefamily}}{{nocuda}}"
   rpmFilters: *filterRequires

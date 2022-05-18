@@ -4,8 +4,6 @@
   name: vision
   release: 2
   forcecuda: "0"
-  suffix:
-  baserpm: "pytorch-python{{python_version}}-{{name}}{{suffix}}"
   version: "{{versions.vision}}"
   vendor_source: https://github.com/pytorch/vision/archive/v{{version}}.{{extension}}
   description: |
@@ -22,5 +20,5 @@
       python{{python_major}} ./setup.py build
   requires:
     - python_{{python_version}}
-    - pytorch-python{{python_version}}-pillow-simd
-  conflicts: "pytorch-python{{python_version}}-{{name}}-cuda"
+    - "{{basefamily}}_pillow-simd"
+  conflicts: "{{basefamily}}{{withcuda}}_{{name}}"

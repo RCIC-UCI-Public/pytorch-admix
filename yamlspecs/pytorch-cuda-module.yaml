@@ -3,10 +3,10 @@
 ---
 - package: pytorch-cuda module
   shortname: pytorch
-  suffix: "-cuda"
-  name: pytorch-cuda
+  cudasuffix: "{{withcuda}}"
   module:
+    logname: pytorch-cuda/{{version}}
     prereq:
       - "{{build.base_modules}}"
       - cuda/{{versions.cuda.version}}
-  conflicts: "{{basename}}_{{version}}_python{{python_version}}-module"
+  conflicts: "{{basefamily}}{{nocuda}}-module"
