@@ -6,7 +6,9 @@
 compiler:
   version: "8.4.0"
 fftw: "3.3.8"
-cudnn: "8.2.2.26"
+# we dont use full version, keep for a reference
+# this is for cuda 11.7
+#cudnn: "8.5.0.96"
 cudnn_major: "8"
 pytorch: "1.11.0"
 pytorch_str: "v"
