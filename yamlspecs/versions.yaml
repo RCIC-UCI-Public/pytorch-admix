@@ -3,6 +3,7 @@
 cudnn: "7.6.4.38"
 cudnn_major: "7"
 pytorch: "1.5.1"
+pytorch_release: 3
 pytorch_str:
 Pillow: "6.2.1"
 pillow_simd: "6.0.0.post0"

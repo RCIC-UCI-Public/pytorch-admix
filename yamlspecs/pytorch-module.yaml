@@ -4,7 +4,6 @@
 ---
 - package: pytorch module
   category: AI-LEARNING
-  release: 3
   module:
     path: "{{pkg_defaults.RCICmpath}}/{{category}}/{{basename}}"
     prepend_path:

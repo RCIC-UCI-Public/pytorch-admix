@@ -3,7 +3,7 @@
 - package: pytorch 
   basename: pytorch
   name: pytorch
-  release: 3
+  release: "{{versions.pytorch_release}}"
   forcecuda: "0"
   version: "{{versions.pytorch}}"
   version_str: "{{versions.pytorch_str}}"
