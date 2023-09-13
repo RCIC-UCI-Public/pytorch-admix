@@ -5,8 +5,8 @@
   version: "{{versions.pillow_simd}}"
   vendor_source: https://github.com/uploadcare/pillow-simd/archive/{{versions.pillow_simd_pref}}{{version}}.{{extension}}
   description: |
-    Pillow-SIMD is following Pillow. Pillow-SIMD versions are 100% compatible drop-in 
-    replacements for Pillow of the same version. SIMD stands for single instuction, 
-    multiple data and its essence is in performing the same operation on multiple 
-    data points simultaneously by using multiple processing elements. 
-    Currently, Pillow-SIMD can be compiled with SSE4 (default) or AVX2 support.
+    Pillow-SIMD version {{version}}, a highly optimized version of Pillow library
+    for x86 architecture (mainly Intel and AMD CPUs). Pillow-SIMD is 100% compatible
+    drop-in replacement for Pillow of the same version. SIMD stands for single instuction,
+    multiple data and its essence is in performing the same operation on multiple data
+    points simultaneously by using multiple processing elements.
