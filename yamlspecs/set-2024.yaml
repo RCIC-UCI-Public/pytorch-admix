@@ -1,0 +1,8 @@
+!include packages.yaml
+---
+versions: versions-2024.yaml
+nocudabuild:
+common:
+cudabuild:
+  - pytorch-cuda
+  - pytorch-cuda-module

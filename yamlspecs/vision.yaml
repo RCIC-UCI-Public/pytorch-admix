@@ -12,7 +12,7 @@
   build:
     modules: 
       - foundation/{{versions.foundation}}
-      - "pytorch/{{versions.pytorch}}"
+      - "pytorch/{{versions.pytorch.version}}"
     pkgmake: >
       export FORCE_CUDA={{forcecuda}};
       export CMAKE_INCLUDE_PATH=$$FFMPEG_INC:$$MKL_INCLUDE_DIR:$$CMAKE_INCLUDE_PATH;

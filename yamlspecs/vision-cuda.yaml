@@ -8,7 +8,7 @@
     modules: 
       - foundation/{{versions.foundation}}
       - "cuda/{{versions.cuda.version}}"
-      - "pytorch/{{versions.pytorch}}"
+      - "pytorch/{{versions.pytorch.version}}"
   requires:
     - python_{{python_version}}
     - "cuda-toolkit_{{versions.cuda.version}}"

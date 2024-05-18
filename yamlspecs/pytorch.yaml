@@ -3,17 +3,17 @@
 - package: pytorch 
   basename: pytorch
   name: pytorch
-  release: 3
+  release: "{{versions.pytorch.release}}"
   forcecuda: "0"
-  version: "{{versions.pytorch}}"
-  version_str: "{{versions.pytorch_str}}"
+  version: "{{versions.pytorch.version}}"
+  version_str: "{{versions.pytorch.str}}"
   baserpm: "{{basefamily}}{{cudasuffix}}"
   src_tarball: "{{basename}}-{{version}}.{{extension}}"
   src_dir: "{{basename}}-{{version_str}}{{version}}"
   vendor_source: https://github.com/pytorch/pytorch/releases/download/v{{version}}/pytorch-v{{version}}.{{extension}}
   root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}"
   description: |
-    PyTorch is a Python package that provides two high-level features
+    PyTorch {{version}} is a Python package that provides two high-level features
     (1) Tensor computation (like NumPy) with strong GPU acceleration
     (2) Deep neural networks built on a tape-based autograd system
   build:

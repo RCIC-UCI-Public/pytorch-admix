@@ -3,7 +3,7 @@
 ---
 - name: common
   tname: pytorch
-  tversion: "{{versions.pytorch}}"
+  tversion: "{{versions.pytorch.version}}"
   cuda: "{{versions.cuda.name}}"
   cuda_version: "{{versions.cuda.version}}"
   basefamily: "{{tname}}_{{tversion}}_python{{python_version}}"

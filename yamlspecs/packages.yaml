@@ -30,3 +30,4 @@ cudamanifest:
   - "{{common}}"
 sets:
   - centos8
+  - "2024"
