@@ -7,9 +7,10 @@ compiler:
   version: "8.4.0"
 fftw: "3.3.8"
 cudnn_major: "8"
-pytorch: "2.0.1"
-pytorch_release: 1
-pytorch_str: "v"
+pytorch:
+   version: "2.0.1"
+   release: "1"
+   str: "v"
 pillow_simd: "9.5.0"
 pillow_simd_pref: "refs/tags/"
 vision: "0.15.2"

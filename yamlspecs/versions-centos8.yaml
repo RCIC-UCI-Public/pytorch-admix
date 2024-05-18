@@ -10,16 +10,10 @@ fftw: "3.3.8"
 # this is for cuda 11.7
 #cudnn: "8.5.0.96"
 cudnn_major: "8"
-<<<<<<< HEAD
 pytorch:
   version: "1.11.0"
   release: "3"
   str: "v"
-=======
-pytorch: "1.11.0"
-pytorch_release: 3
-pytorch_str: "v"
->>>>>>> befe1ad4f18d55866e155a84d77979d2eb2bbb90
 pillow_simd: "9.0.1"
 pillow_simd_pref: "refs/tags/"
 vision: "0.12.0"
