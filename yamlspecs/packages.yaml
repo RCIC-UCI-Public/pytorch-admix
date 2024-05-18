@@ -31,3 +31,4 @@ cudamanifest:
 sets:
   - centos8
   - "2023"
+  - "2024"
