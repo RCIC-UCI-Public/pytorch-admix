@@ -3,11 +3,7 @@
 - package: pytorch 
   basename: pytorch
   name: pytorch
-<<<<<<< HEAD
-  release: "{{versions.pytorch.release}}"
-=======
   release: "{{versions.pytorch_release}}"
->>>>>>> befe1ad4f18d55866e155a84d77979d2eb2bbb90
   forcecuda: "0"
   version: "{{versions.pytorch.version}}"
   version_str: "{{versions.pytorch.str}}"
