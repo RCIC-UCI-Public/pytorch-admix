@@ -7,8 +7,8 @@
   version: "{{versions.vision}}"
   vendor_source: https://github.com/pytorch/vision/archive/v{{version}}.{{extension}}
   description: |
-    The torchvision package consists of popular datasets, model architectures,
-    and common image transformations for computer vision
+    The torchvision package version {{version}} consists of popular datasets, model architectures,
+    and common image transformations for computer vision. Uses Pillow-SIMD image backend.
   build:
     modules: 
       - foundation/{{versions.foundation}}

@@ -6,3 +6,6 @@ a38a9c1e38327e83712ab29300eb030bd0114ef4  sources/pytorch-1.4.0.a0.tar.gz 1Z-JhB
 ff162f6d04e22ed13553ceeadb1f35ef7cbcab0b  sources/pillow-simd-9.0.1.tar.gz 1JJ7xviU9ARnt2eno3vf2OoMuGRIIsXTx
 d376000d0261f0c10901dead6cc330e56e47399f  sources/vision-0.12.0.tar.gz 1AObbgqicxSM9o62hNBTJIgPXNcaYUrW0
 941f4cb5a6ff6cff5c6b91ab741f5a6819dc0656  sources/pytorch-1.11.0.tar.gz
+d641eea68ff2dc1f2a743f9374544aab5ed5e2d2  sources/vision-0.15.2.tar.gz
+585fecd5652414bf9a896787e0b7b1680959c21e  sources/pillow-simd-9.5.0.tar.gz
+bd8db3482f9ce895cb3980854111d924dbeb6f55  sources/pytorch-2.0.1.tar.gz
