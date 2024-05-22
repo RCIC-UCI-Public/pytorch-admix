@@ -1,0 +1,28 @@
+!include pytorch-cuda.yaml
+---
+- build:
+    modules:
+      - "{{build.base_modules}}"
+      - "cuda/{{versions.cuda.version}}"
+    pkgmake: >
+      export USE_CUDA={{forcecuda}} USE_CUDNN={{forcecuda}};
+      export TORCH_CUDA_ARCH_LIST="8.0 8.6 8.9 9.0";
+      export USE_MKLDNN=0 USE_MKLDNN_CBLAS=1 DNNL_CPU_RUNTIME=OMP;
+      export USE_FFMPEG=1;
+      export LIBRARY_PATH=$$LD_LIBRARY_PATH;
+      export CMAKE_INCLUDE_PATH=$$FFMPEG_INC:$$MKL_INCLUDE_DIR:$$CMAKE_INCLUDE_PATH;
+      export CMAKE_LIBRARY_PATH=$$LD_LIBRARY_PATH:$$CMAKE_LIBRARY_PATH;
+      export MAX_JOBS=8;
+      python{{python_major}} ./setup.py build
+  install:
+    makeinstall: >
+      export TORCH_CUDA_ARCH_LIST="8.0 8.6 8.9 9.0";
+      export LIBRARY_PATH=$$LD_LIBRARY_PATH;
+      export MAX_JOBS=8;
+      python{{python_major}} setup.py install --root $(ROOT) --prefix={{root}}
+
+# Specific flags for 2.3.0 and up
+# dont use foundation  module (no need for ninja)
+# TORCH_CUDA_ARCH_LIST - use to reset a default that has added  9.0a breakign the build
+# MAX_JOBS=8 - use to limit number of concurrent compile tasks. otherwise build fails
+#              either with or without ninja as cc1* tasks consume all 16G phys + 24G swap

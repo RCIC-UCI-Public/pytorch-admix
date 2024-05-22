@@ -85,3 +85,9 @@ Admix for pytorch
 
 - cuda-enabled versions of pytorch and vision are in respective <name>-cuda.yaml files.
   RPMs names have cuda and its version specified.
+
+## pytorch v2.3.0
+
+Build fails even with 16GB physical + 16G swapfile 
+when compiled either with ninja or without (build find ninja in the presense of faoundation module)
+Create a pytorch2-cuda.yaml and adjust a few parameters, see notes in the file. 

@@ -4,5 +4,5 @@ versions: versions-2024.yaml
 nocudabuild:
 common:
 cudabuild:
-  - pytorch-cuda
-  - pytorch-cuda-module
+  - pytorch2-cuda
+  - pytorch2-cuda-module
