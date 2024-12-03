@@ -1,8 +1,10 @@
 !include packages.yaml
 ---
 versions: versions-2024.yaml
-nocudabuild:
-common:
+bootstrap:
+  - "{{bootstrap0}}"
+build:
+  - "{{build0}}"
 cudabuild:
   - pytorch2-cuda
   - pytorch2-cuda-module

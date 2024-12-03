@@ -1,3 +1,12 @@
 !include packages.yaml
 ---
 versions: versions-2023.yaml
+
+bootstrap:
+  - "{{bootstrap0}}"
+cudabuild:
+  - "{{cudabuild0}}"
+common:
+  - "{{common0}}"
+build:
+  - "{{build0}}"

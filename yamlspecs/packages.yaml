@@ -8,23 +8,25 @@
 ---
 system:
 bootstrap:
+bootstrap0:
   - pytorch
   - pytorch-module
 cudabuild:
+cudabuild0:
   - pytorch-cuda
   - pytorch-cuda-module
   - vision-cuda
-nocudabuild:
-  - vision
-  - "{{common}}" 
 common:
+common0:
+  - vision
   - pillow-simd
 build:
-  - "{{nocudabuild}}"
+build0:
+  - "{{common}}"
   - "{{cudabuild}}"
 manifest:
   - "{{bootstrap}}"
-  - "{{nocudabuild}}"
+  - "{{common}}"
 cudamanifest:
   - "{{cudabuild}}"
   - "{{common}}"
