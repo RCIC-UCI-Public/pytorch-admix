@@ -6,7 +6,7 @@
   conflicts: "{{basefamily}}{{nocuda}}-{{name}}"
   build:
     modules: 
-      - foundation/{{versions.foundation}}
+      - cmake/{{versions.cmake}}
       - "cuda/{{versions.cuda.version}}"
       - "pytorch/{{versions.pytorch.version}}"
   requires:

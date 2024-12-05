@@ -19,7 +19,7 @@
   build:
     modules: 
       - "{{build.base_modules}}"
-      - foundation/{{versions.foundation}}
+      - cmake/{{versions.cmake}}
     base_modules: 
       - "{{compiler}}/{{compiler_version}}"
       - python/{{python_version}}

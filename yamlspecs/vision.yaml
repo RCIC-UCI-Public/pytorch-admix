@@ -11,7 +11,7 @@
     and common image transformations for computer vision. Uses Pillow-SIMD image backend.
   build:
     modules: 
-      - foundation/{{versions.foundation}}
+      - cmake/{{versions.cmake}}
       - "pytorch/{{versions.pytorch.version}}"
     pkgmake: >
       export FORCE_CUDA={{forcecuda}};

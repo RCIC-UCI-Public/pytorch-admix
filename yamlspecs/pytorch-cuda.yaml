@@ -9,7 +9,7 @@
     modules:
       - "{{build.base_modules}}"
       - "cuda/{{versions.cuda.version}}"
-      - foundation/{{versions.foundation}}
+      - cmake/{{versions.cmake}}
   requires:
     - "{{base_requires}}"
     - "cuda-toolkit_{{versions.cuda.version}}"
