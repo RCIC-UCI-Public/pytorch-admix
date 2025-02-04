@@ -1,5 +1,4 @@
-!include site.yaml
-!include updates8.yaml
+!include versions.yaml
 ---
 # overwrite compiler and fftw from udpates8
 # this is because cuda 11 requires compmiler < 10

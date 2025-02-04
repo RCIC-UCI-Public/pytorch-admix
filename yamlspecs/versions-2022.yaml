@@ -1,14 +1,10 @@
-!include site.yaml
-!include updates8.yaml
+!include versions.yaml
 ---
 # overwrite compiler and fftw from udpates8
 # this is because cuda 11 requires compmiler < 10
 compiler:
   version: "8.4.0"
 fftw: "3.3.8"
-# we dont use full version, keep for a reference
-# this is for cuda 11.7
-#cudnn: "8.5.0.96"
 cudnn_major: "8"
 pytorch:
   version: "1.11.0"
