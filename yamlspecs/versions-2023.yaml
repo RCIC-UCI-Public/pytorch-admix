@@ -13,3 +13,5 @@ pytorch:
 pillow_simd: "9.5.0"
 pillow_simd_pref: "refs/tags/"
 vision: "0.15.2"
+ffmpeg: "4.1.3"
+
