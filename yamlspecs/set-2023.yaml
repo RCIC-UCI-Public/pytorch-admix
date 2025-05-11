@@ -5,8 +5,9 @@ versions: versions-2023.yaml
 bootstrap:
   - "{{bootstrap0}}"
 cudabuild:
-  - "{{cudabuild0}}"
+  - pytorch-cuda
+  - pytorch-cuda-module
+  - vision-cuda
 common:
-  - "{{common0}}"
-build:
-  - "{{build0}}"
+  - vision
+  - pillow-simd

@@ -3,8 +3,6 @@
 versions: versions-2024.yaml
 bootstrap:
   - "{{bootstrap0}}"
-build:
-  - "{{build0}}"
 cudabuild:
   - pytorch2-cuda
   - pytorch2-cuda-module
