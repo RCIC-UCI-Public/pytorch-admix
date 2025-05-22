@@ -7,10 +7,11 @@
   version: "{{versions.vision}}"
   vendor_source: https://github.com/pytorch/vision/archive/v{{version}}.{{extension}}
   description: |
-    The torchvision package version {{version}} consists of popular datasets, model architectures,
-    and common image transformations for computer vision. Uses Pillow-SIMD image backend.
+    Torchvision provides image and video datasets and models for deep learning.
+    It consists of popular datasets, model architectures, and common image
+    transformations for computer vision. Uses Pillow-SIMD image backend.
   build:
-    modules: 
+    modules:
       - cmake/{{versions.cmake}}
       - "pytorch/{{versions.pytorch.version}}"
     pkgmake: >

@@ -5,7 +5,7 @@
   cudasuffix: "{{withcuda}}"
   conflicts: "{{basefamily}}{{nocuda}}-{{name}}"
   build:
-    modules: 
+    modules:
       - cmake/{{versions.cmake}}
       - "cuda/{{versions.cuda.version}}"
       - "pytorch/{{versions.pytorch.version}}"

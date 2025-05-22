@@ -3,7 +3,7 @@
 - package: pytorch cuda-enabled
   cudasuffix: "{{withcuda}}"
   forcecuda: "1"
-  addfile: 
+  addfile:
     - "filter-requires-{{name}}.sh"
   build:
     modules:
