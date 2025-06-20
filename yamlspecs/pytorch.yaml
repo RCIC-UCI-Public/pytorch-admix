@@ -13,7 +13,7 @@
   vendor_source: https://github.com/pytorch/pytorch/releases/download/v{{version}}/pytorch-v{{version}}.{{extension}}
   root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}"
   description: |
-    PyTorch is a machine learning framework, written in Python.
+    PyTorch is a machine learning framework written in Python.
   build:
     patchfile: "{{name}}.{{version}}.patch"
     modules:
