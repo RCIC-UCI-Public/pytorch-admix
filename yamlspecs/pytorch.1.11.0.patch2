@@ -1,0 +1,67 @@
+--- pytorch-v1.11.0/third_party/breakpad/src/client/linux/handler/exception_handler.cc	2025-05-10 16:04:16.822103598 -0700
++++ pytorch-v1.11.0/third_party/breakpad/src/client/linux/handler/exception_handler.cc.new	2025-05-10 16:04:00.694103826 -0700
+@@ -138,7 +138,7 @@
+   // SIGSTKSZ may be too small to prevent the signal handlers from overrunning
+   // the alternative stack. Ensure that the size of the alternative stack is
+   // large enough.
+-  static const unsigned kSigStackSize = std::max(16384, SIGSTKSZ);
++  const unsigned kSigStackSize = std::max<unsigned>(16384, SIGSTKSZ);
+ 
+   // Only set an alternative stack if there isn't already one, or if the current
+   // one is too small.
+--- pytorch-v1.11.0/third_party/gloo/gloo/common/linux.cc	2022-03-10 09:01:52.000000000 -0800
++++ pytorch-v1.11.0/third_party/gloo/gloo/common/linux.cc.new	2026-06-18 14:06:23.113193019 -0700
+@@ -187,33 +187,33 @@
+ static int getInterfaceSpeedGLinkSettings(int sock, struct ifreq* ifr) {
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4,6,0)
+   constexpr auto link_mode_data_nwords = 3 * 127;
+-  struct {
+-    struct ethtool_link_settings req;
+-    __u32 link_mode_data[link_mode_data_nwords];
+-  } ecmd;
+-  int rv;
+-
+-  ifr->ifr_data = (__caddr_t)&ecmd;
+-  memset(&ecmd, 0, sizeof(ecmd));
+-  ecmd.req.cmd = ETHTOOL_GLINKSETTINGS;
++  
++  // Allocate total required size on stack as a raw byte buffer to bypass GCC checking
++  alignas(struct ethtool_link_settings) char buffer[sizeof(struct ethtool_link_settings) + (link_mode_data_nwords * sizeof(__u32))];
++  memset(buffer, 0, sizeof(buffer));
+ 
+-  rv = ioctl(sock, SIOCETHTOOL, ifr);
+-  if (rv < 0 || ecmd.req.link_mode_masks_nwords >= 0) {
+-    return SPEED_UNKNOWN;
+-  }
++  // Cast the buffer pointer to the required base structure type
++  struct ethtool_link_settings* ecmd = reinterpret_cast<struct ethtool_link_settings*>(buffer);
++  int rv; 
++
++  // Point the ifr_data to our raw memory chunk
++  ifr->ifr_data = (__caddr_t)ecmd;
++  ecmd->cmd = ETHTOOL_GLINKSETTINGS;
++  ifr->ifr_data = (__caddr_t)ecmd;
++  ecmd->cmd = ETHTOOL_GLINKSETTINGS;
++
++  // Change from ecmd.req.link_mode_masks_nwords to ->
++  ecmd->link_mode_masks_nwords = link_mode_data_nwords;
+ 
+-  ecmd.req.cmd = ETHTOOL_GLINKSETTINGS;
+-  ecmd.req.link_mode_masks_nwords = -ecmd.req.link_mode_masks_nwords;
+   rv = ioctl(sock, SIOCETHTOOL, ifr);
+   if (rv < 0) {
+-    return SPEED_UNKNOWN;
++    return rv;
+   }
+ 
+-  return ecmd.req.speed;
++  // Change from ecmd.req.speed to ->
++  return ecmd->speed;
+ #else
+-  (void)sock;
+-  (void)ifr;
+-  return SPEED_UNKNOWN;
++  return -1;
+ #endif
+ }
+ 

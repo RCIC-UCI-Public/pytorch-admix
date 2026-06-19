@@ -15,7 +15,7 @@
   description: |
     PyTorch is a machine learning framework written in Python.
   build:
-    patchfile: "{{name}}.{{version}}.patch"
+    patchfile: !OScmp "<,10,{{name}}.{{version}}.patch,{{name}}.{{version}}.patch2"
     modules:
       - "{{build.base_modules}}"
       - cmake/{{versions.cmake}}
