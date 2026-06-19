@@ -3,8 +3,8 @@
 # overwrite compiler and fftw from udpates8
 # this is because cuda 11 requires compmiler < 10
 compiler:
-  version: "8.4.0"
-fftw: "3.3.8"
+  version: !OScmp ">=,10,11.2.0,8.4.0"
+fftw: !OScmp ">=,10,3.3.10,3.3.8"
 cudnn_major: "8"
 pytorch:
   version: "1.11.0"
