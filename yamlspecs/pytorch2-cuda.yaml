@@ -4,6 +4,7 @@
     modules:
       - "{{build.base_modules}}"
       - "cuda/{{versions.cuda.version}}"
+      - cmake/{{versions.cmake}} 
     pkgmake: >
       export USE_CUDA={{forcecuda}} USE_CUDNN={{forcecuda}};
       export TORCH_CUDA_ARCH_LIST="8.0 8.6 8.9 9.0";
